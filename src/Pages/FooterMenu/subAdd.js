@@ -169,10 +169,14 @@ const SubAdd = (props) => {
           className="form-control form-select"
           onChange={handleChange}
         >
+          {/* ["news", "products", "beproducts", "faq", "lend", "calculator"], */}
           <option value=""> Холбогдох модел </option>
           <option value="news"> Мэдээ мэдээлэл </option>
+          <option value="products"> Бэлэн машинууд </option>
+          <option value="beproducts"> Beforward машинууд </option>
+          <option value="lend"> Зээлийн тооцоолуур </option>
+          <option value="calculator"> Үнэ бодуулах </option>
           <option value="contact"> Холбоо барих </option>
-          <option value="employee"> Ажилчид</option>
         </select>
       </div>
       <div className={`modelBtnGroup`}>

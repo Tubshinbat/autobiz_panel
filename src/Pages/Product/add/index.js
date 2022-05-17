@@ -630,10 +630,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createProduct: (data) => dispatch(actions.createProduct(data)),
-    loadCarcolors: (slug) => dispatch(loadCarcolors(slug)),
-    loadCarindustrys: (slug) => dispatch(loadCarindustrys(slug)),
-    loadCarzagvars: (slug) => dispatch(loadCarzagvars(slug)),
-    loadCartypes: (slug) => dispatch(loadCartypes(slug)),
+    loadCarcolors: (query) => dispatch(loadCarcolors(query)),
+    loadCarindustrys: (query) => dispatch(loadCarindustrys(query)),
+    loadCarzagvars: (query) => dispatch(loadCarzagvars(query)),
+    loadCartypes: (query) => dispatch(loadCartypes(query)),
     clear: () => dispatch(actions.clear()),
     tinymceAddPhoto: (file) => dispatch(tinymceAddPhoto(file)),
     removePhotos: () => dispatch(allRemove()),
