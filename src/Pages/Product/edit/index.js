@@ -454,10 +454,10 @@ const Edit = (props) => {
                     value={formData.car_hurd}
                     onChange={handleChange}
                   >
-                    <option value="Буруу" selected>
-                      Буруу
+                    <option value="Баруун" selected>
+                      Баруун
                     </option>
-                    <option value="Зөв"> Зөв </option>
+                    <option value="Зүүн"> Зүүн </option>
                     <option value="Бусад"> Бусад </option>
                   </select>
                 </div>

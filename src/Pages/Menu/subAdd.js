@@ -173,6 +173,7 @@ const SubAdd = (props) => {
           <option value="news"> Мэдээ мэдээлэл </option>
           <option value="contact"> Холбоо барих </option>
           <option value="employee"> Ажилчид</option>
+          <option value="contact"> Холбоо барих </option>
         </select>
       </div>
       <div className={`modelBtnGroup`}>
