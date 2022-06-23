@@ -235,6 +235,48 @@ const routes = [
     path: "/partners/edit/:id",
     breadcrumb: DynamicNewsBreadcrumb,
   },
+  {
+    path: "/ordertype",
+    breadcrumb: "Захиалгын төлөв",
+  },
+  {
+    path: "/ordertype/add",
+    breadcrumb: "Захиалгын төлөв нэмэх",
+  },
+  {
+    path: "/ordertype/edit",
+    breadcrumb: "Захиалгын төлөв шинэчлэх",
+  },
+  {
+    path: "/ordertype/edit/:id",
+    breadcrumb: DynamicNewsBreadcrumb,
+  },
+  {
+    path: "/local_orders",
+    breadcrumb: "Бэлэн машины захиалга",
+  },
+
+  {
+    path: "/local_orders/edit",
+    breadcrumb: "Бэлэн машины захиалга",
+  },
+  {
+    path: "/local_orders/edit/:id",
+    breadcrumb: DynamicNewsBreadcrumb,
+  },
+  {
+    path: "/stock_orders",
+    breadcrumb: "Stock машины захиалга",
+  },
+
+  {
+    path: "/stock_orders/edit",
+    breadcrumb: "Stock машины захиалга",
+  },
+  {
+    path: "/stock_orders/edit/:id",
+    breadcrumb: DynamicNewsBreadcrumb,
+  },
 ];
 let lastBread = "";
 

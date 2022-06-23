@@ -68,7 +68,14 @@ const Edit = (props) => {
     if (props.product) {
       setForm(() => ({
         ...props.product,
+        car_industry:
+          props.product.car_industry && props.product.car_industry._id,
+        car_zagvar: props.product.car_zagvar && props.product.car_zagvar._id,
+        car_type: props.product.car_type && props.product.car_type._id,
+        color: props.product.color && props.product.color._id,
       }));
+
+      console.log();
 
       if (props.product.pictures) {
         setPhotos(props.product.pictures);
@@ -227,8 +234,8 @@ const Edit = (props) => {
         <div className="col-md-8">
           <CardBoby>
             <div className={`${css.AddForm} row`}>
-              <div className="col-md-6">
-                <div className="form-group input-group-sm">
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Машины үйлдвэрлэгч</p>
                   <select
                     className="form-select"
@@ -249,8 +256,8 @@ const Edit = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-6">
-                <div className="form-group input-group-sm">
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Машины загвар</p>
                   <select
                     className="form-select"
@@ -271,8 +278,8 @@ const Edit = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-6">
-                <div className="form-group input-group-sm">
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Машины төрөл</p>
                   <select
                     className="form-select"
@@ -291,8 +298,8 @@ const Edit = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-md-6">
-                <div className="form-group input-group-sm">
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Машины өнгө</p>
                   <select
                     className="form-select"
@@ -309,7 +316,7 @@ const Edit = (props) => {
                 </div>
               </div>
               <div className="col-md-12">
-                <div className="form-group input-group-sm">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Гарчиг </p>
                   <span> </span>
                   <input
@@ -326,8 +333,8 @@ const Edit = (props) => {
                 </div>
               </div>
 
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Үнэ </p>
                   <input
                     className="form-control"
@@ -343,8 +350,8 @@ const Edit = (props) => {
                 </div>
               </div>
 
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Орж ирсэн он</p>
                   <select
                     className="form-select"
@@ -360,8 +367,8 @@ const Edit = (props) => {
                 </div>
               </div>
 
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
                   <p className={`${css.Title}`}> Үйлдвэрлэгдсэн он</p>
                   <select
                     className="form-select"
@@ -376,8 +383,125 @@ const Edit = (props) => {
                   </select>
                 </div>
               </div>
+
               <div className="col-md-12">
-                <div className="form-group">
+                <div className="form-group-my input-group-sm">
+                  <p className={`${css.Title}`}> Мотор /cc/</p>
+                  <input
+                    className="form-control"
+                    type="number"
+                    name="car_motor"
+                    value={formData.car_motor}
+                    placeholder="Моторын мэдээлэл оруулна уу"
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
+                  <p className={`${css.Title}`}> Гүйлт /km/</p>
+                  <input
+                    className="form-control"
+                    type="number"
+                    name="car_km"
+                    value={formData.car_km}
+                    placeholder="Гүйлтыг оруулна уу"
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
+                  <p className={`${css.Title}`}> Машины хүрд</p>
+                  <select
+                    className="form-select"
+                    name="car_hurd"
+                    value={formData.car_hurd}
+                    onChange={handleChange}
+                  >
+                    <option value="Баруун" selected>
+                      Баруун
+                    </option>
+                    <option value="Зүүн"> Зүүн </option>
+                    <option value="Бусад"> Бусад </option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
+                  <p className={`${css.Title}`}> Шатахуун</p>
+                  <select
+                    className="form-select"
+                    name="car_shatakhuun"
+                    onChange={handleChange}
+                    value={formData.car_shatakhuun}
+                  >
+                    <option selected value="">
+                      Шатахуун сонгох
+                    </option>
+                    <option value="Бензин">Бензин</option>
+                    <option value="Газ"> Газ </option>
+                    <option value="Түлш"> Түлш </option>
+                    <option value="Хайбрид (Hybrid)"> Хайбрид (Hybrid)</option>
+                    <option value="Цахилгаа">Цахилгаа</option>
+                    <option value="Бусад">Бусад</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
+                  <p className={`${css.Title}`}> Хурдны хайрцаг </p>
+                  <select
+                    className="form-select"
+                    name="car_speed_box"
+                    onChange={handleChange}
+                    value={formData.car_speed_box}
+                  >
+                    <option selected value="">
+                      Хурдны хайрцаг сонгох
+                    </option>
+                    <option value="Автомат">Автомат</option>
+                    <option value="Автомат-CVT"> Автомат-CVT </option>
+                    <option value="Механик"> Механик </option>
+                    <option value="Бусад">Бусад</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="col-md-12">
+                <div className="form-group-my input-group-sm">
+                  <p className={`${css.Title}`}> Лизинг, хямдралтай эсэх </p>
+                  <select
+                    className="form-select"
+                    name="lizing"
+                    onChange={handleChange}
+                    value={formData.lizing}
+                  >
+                    <option selected value="">
+                      Лизинг, хямдралтай эсэх сонгох
+                    </option>
+                    <option value="Лизингээр авах боломжгүй">
+                      Лизингээр авах боломжгүй
+                    </option>
+                    <option value="Банкны лизинг болон Банк бусаар">
+                      Банкны лизинг болон Банк бусаар
+                    </option>
+                    <option value="Банкны лизингээр авах боломжтой">
+                      Банкны лизингээр авах боломжтой
+                    </option>
+                    <option value="Хувь лизинг">Хувь лизинг</option>
+                    <option value="Хямдруулах боломжтой">
+                      Хямдруулах боломжтой
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div className="col-md-12">
+                <div className="form-group-my">
                   <p className={`${css.Title}`}> Машины дэлгэрэнгүй </p>
                   <Editor
                     apiKey="2nubq7tdhudthiy6wfb88xgs36os4z3f4tbtscdayg10vo1o"
@@ -417,123 +541,6 @@ const Edit = (props) => {
                   />
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Мотор /cc/</p>
-                  <input
-                    className="form-control"
-                    type="number"
-                    name="car_motor"
-                    value={formData.car_motor}
-                    placeholder="Моторын мэдээлэл оруулна уу"
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Гүйлт /km/</p>
-                  <input
-                    className="form-control"
-                    type="number"
-                    name="car_km"
-                    value={formData.car_km}
-                    placeholder="Гүйлтыг оруулна уу"
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Машины хүрд</p>
-                  <select
-                    className="form-select"
-                    name="car_hurd"
-                    value={formData.car_hurd}
-                    onChange={handleChange}
-                  >
-                    <option value="Баруун" selected>
-                      Баруун
-                    </option>
-                    <option value="Зүүн"> Зүүн </option>
-                    <option value="Бусад"> Бусад </option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Шатахуун</p>
-                  <select
-                    className="form-select"
-                    name="car_shatakhuun"
-                    onChange={handleChange}
-                    value={formData.car_shatakhuun}
-                  >
-                    <option selected value="">
-                      Шатахуун сонгох
-                    </option>
-                    <option value="Бензин">Бензин</option>
-                    <option value="Газ"> Газ </option>
-                    <option value="Түлш"> Түлш </option>
-                    <option value="Хайбрид (Hybrid)"> Хайбрид (Hybrid)</option>
-                    <option value="Цахилгаа">Цахилгаа</option>
-                    <option value="Бусад">Бусад</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Хурдны хайрцаг </p>
-                  <select
-                    className="form-select"
-                    name="car_speed_box"
-                    onChange={handleChange}
-                    value={formData.car_speed_box}
-                  >
-                    <option selected value="">
-                      Хурдны хайрцаг сонгох
-                    </option>
-                    <option value="Автомат">Автомат</option>
-                    <option value="Автомат-CVT"> Автомат-CVT </option>
-                    <option value="Механик"> Механик </option>
-                    <option value="Бусад">Бусад</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Лизинг, хямдралтай эсэх </p>
-                  <select
-                    className="form-select"
-                    name="lizing"
-                    onChange={handleChange}
-                    value={formData.lizing}
-                  >
-                    <option selected value="">
-                      Лизинг, хямдралтай эсэх сонгох
-                    </option>
-                    <option value="Лизингээр авах боломжгүй">
-                      Лизингээр авах боломжгүй
-                    </option>
-                    <option value="Банкны лизинг болон Банк бусаар">
-                      Банкны лизинг болон Банк бусаар
-                    </option>
-                    <option value="Банкны лизингээр авах боломжтой">
-                      Банкны лизингээр авах боломжтой
-                    </option>
-                    <option value="Хувь лизинг">Хувь лизинг</option>
-                    <option value="Хямдруулах боломжтой">
-                      Хямдруулах боломжтой
-                    </option>
-                  </select>
-                </div>
-              </div>
-
               <div className="col-md-12">
                 <div className={`btns`}>
                   <button
@@ -562,7 +569,7 @@ const Edit = (props) => {
               <h3 className="card-title">ТОХИРГОО</h3>
             </div>
             <div className="card-body box-profile">
-              <div className="form-group">
+              <div className="form-group-my">
                 <div className="custom-control custom-switch">
                   <input
                     type="checkbox"

@@ -32,6 +32,9 @@ import carZagvarReducer from "./redux/reducer/carzagvarReducer";
 import carColorReducer from "./redux/reducer/carColorReducer";
 import contactReducer from "./redux/reducer/contactReducer";
 import hybridReducer from "./redux/reducer/hybridReducer";
+import orderReducer from "./redux/reducer/orderReducer";
+import orderTypeReducer from "./redux/reducer/orderTypeReducer";
+import beorderReducer from "./redux/reducer/beorderReducer";
 
 import "./index.css";
 
@@ -73,6 +76,9 @@ const reducers = combineReducers({
   carIndustryReducer,
   hybridReducer,
   socialLinkReducer,
+  orderReducer,
+  beorderReducer,
+  orderTypeReducer,
 });
 
 const middlewares = [loggerMiddlaware, thunk];

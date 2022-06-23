@@ -74,6 +74,17 @@ import Beproduct from "../BeProduct";
 import { default as BeproductView } from "../BeProduct/View";
 import { default as BeproductEdit } from "../BeProduct/Edit";
 
+import OrderType from "../OrderType";
+import { default as OrderTypeAdd } from "../OrderType/Add";
+import { default as OrderTypeEdit } from "../OrderType/Edit";
+
+import LocalOrder from "../LocalOrder";
+import { default as LocalOrderAdd } from "../LocalOrder/Add";
+import { default as LocalOrderEdit } from "../LocalOrder/Edit";
+
+import StockOrder from "../StockOrder";
+import { default as StockOrderEdit } from "../StockOrder/Edit";
+
 import Menu from "../Menu";
 // Actions
 import { tokenCheck } from "../../redux/actions/tokenActions";
@@ -162,6 +173,16 @@ function App(props) {
               <Route path="/beproduct/view/:id" component={BeproductView} />
               <Route path="/beproduct/edit/:id" component={BeproductEdit} />
               <Route path="/beproduct" component={Beproduct} />
+
+              <Route path="/ordertype/add" component={OrderTypeAdd} />
+              <Route path="/ordertype/edit/:id" component={OrderTypeEdit} />
+              <Route path="/ordertype" component={OrderType} />
+
+              <Route path="/local_orders/edit/:id" component={LocalOrderEdit} />
+              <Route path="/local_orders" component={LocalOrder} />
+
+              <Route path="/stock_orders/edit/:id" component={StockOrderEdit} />
+              <Route path="/stock_orders" component={StockOrder} />
 
               <Route path="/" exact component={Dashboard} />
               <Route path="/logout" component={Logout} />

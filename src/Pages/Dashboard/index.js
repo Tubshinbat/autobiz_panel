@@ -11,6 +11,9 @@ import { loadWebinfo } from "../../redux/actions/webinfoActions";
 import { getCountUser } from "../../redux/actions/userActions";
 import { getCountPage } from "../../redux/actions/pageActions";
 import { getCountMenu } from "../../redux/actions/menuActions";
+import { getCountProduct } from "../../redux/actions/productActions";
+import { getCountOrder } from "../../redux/actions/orderActions";
+import { getCountBeorder } from "../../redux/actions/beorderActions";
 import { getCountBeProducts } from "../../redux/actions/beProductActions";
 
 //Style
@@ -34,6 +37,9 @@ const Dashboard = (props) => {
     props.getCountUser();
     props.getCountPage();
     props.getCountMenu();
+    props.getCountBeorder();
+    props.getCountOrder();
+    props.getCountProduct();
     props.getCountBeProducts();
   }, []);
 
@@ -130,7 +136,7 @@ const Dashboard = (props) => {
                 <div className="info-box-content">
                   <span className="info-box-text">Бэлэн байгаа</span>
                   <span className="info-box-number">
-                    {props.beProductsTotal && props.beProductsTotal}
+                    {props.productTotal && props.productTotal}
                   </span>
                 </div>
               </div>
@@ -142,9 +148,23 @@ const Dashboard = (props) => {
                   <i className="fa fa-car" />
                 </span>
                 <div className="info-box-content">
-                  <span className="info-box-text">Бэлэн байгаа</span>
+                  <span className="info-box-text"> Худалдан авах хүсэлт</span>
                   <span className="info-box-number">
-                    {props.beProductsTotal && props.beProductsTotal}
+                    {props.orderTotal && props.orderTotal}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-3 col-sm-6 col-12">
+              <div className="info-box">
+                <span className="info-box-icon bg-success">
+                  <i className="fa fa-car" />
+                </span>
+                <div className="info-box-content">
+                  <span className="info-box-text">Захиалга</span>
+                  <span className="info-box-number">
+                    {props.beOrderTotal && props.beOrderTotal}
                   </span>
                 </div>
               </div>
@@ -221,6 +241,9 @@ const mapStateToProps = (state) => {
     userTotal: state.userReducer.totalCount,
     pageTotal: state.pageReducer.totalCount,
     menuTotal: state.menuReducer.totalCount,
+    orderTotal: state.orderReducer.totalCount,
+    beOrderTotal: state.beorderReducer.totalCount,
+    productTotal: state.productReducer.totalCount,
     beProductsTotal: state.beProductsReducer.totalCount,
     webInfo: state.webinfoReducer.webInfo,
   };
@@ -234,6 +257,9 @@ const mapDispatchToProp = (dispatch) => {
     getCountPage: () => dispatch(getCountPage()),
     getCountMenu: () => dispatch(getCountMenu()),
     getCountBeProducts: () => dispatch(getCountBeProducts()),
+    getCountBeorder: () => dispatch(getCountBeorder()),
+    getCountOrder: () => dispatch(getCountOrder()),
+    getCountProduct: () => dispatch(getCountProduct()),
   };
 };
 

@@ -1,10 +1,7 @@
 const myBase = {
-  cdnUrl: "https://rest.queenbella.mn/",
-  baseUrl: "https://admin.queenbella.mn/",
-  siteUrl: "https://beta.queenbella.mn/",
-  // cdnUrl: "http://localhost:8022/",
-  // baseUrl: "http://localhost:3001/",
-  // siteUrl: "http://localhost:3000/",
+  cdnUrl: "https://autobiz.mn/",
+  baseUrl: "https://admin.autobiz.mn/",
+  siteUrl: "https://autobiz.mn/",
 };
 
 export default myBase;

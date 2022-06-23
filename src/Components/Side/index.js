@@ -81,14 +81,21 @@ const Side = () => {
               </NavItem>
             </PackList>
             <PackList name="Форм">
+              <NavItem exact link="/ordertype">
+                <i className="nav-icon fas fa-inbox"></i>
+                <p>Захиалгын төрөл</p>
+              </NavItem>
               <MultipleList name="Захиалгууд" icon="nav-icon fas fa-newspaper">
                 <NavItem exact link="/orders">
                   <i className="nav-icon far fa-circle nav-icon"></i>
                   <p>Auction Захиалгууд</p>
                 </NavItem>
-                <NavItem exact link="/news-category">
+                <NavItem exact link="/stock_orders">
                   <i className="nav-icon far fa-circle nav-icon"></i>
                   <p>Stock захиалга</p>
+                </NavItem>
+                <NavItem exact link="/local_orders">
+                  <p>Бэлэн машин захиалга</p>
                 </NavItem>
               </MultipleList>
 
