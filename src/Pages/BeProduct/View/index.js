@@ -415,7 +415,7 @@ const Add = (props) => {
                     {props.beProduct.gallery_images &&
                       props.beProduct.gallery_images.map((image) => (
                         <img
-                          src={`${base.cdnUrl}/uploads/${el.id}/product/${image}`}
+                          src={`${base.cdnUrl}/uploads/${props.beProduct.id}/product/${image}`}
                           className={`${css.OldImage} `}
                           key={`img-${image}`}
                         />
