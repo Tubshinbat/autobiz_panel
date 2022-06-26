@@ -5,7 +5,7 @@ import MetaTags from "react-meta-tags";
 import { ToastContainer } from "react-toastify";
 import { toastControl } from "../../lib/toasControl";
 import Pagination from "react-js-pagination";
-import myBase from "../../base";
+import base from "../../base";
 
 // ACTIONS
 import * as actions from "../../redux/actions/beProductActions";
@@ -432,7 +432,7 @@ const BeProduct = (props) => {
                         {el.gallery_images ? (
                           <div className="tableImgBox">
                             <img
-                              src={`${el.gallery_images[0]}`}
+                              src={`${base.cdnUrl}/uploads/${el.id}/product/${el.gallery_images[0]}`}
                               className="tableImg"
                             />
                           </div>
