@@ -432,7 +432,7 @@ const BeProduct = (props) => {
                         {el.gallery_images ? (
                           <div className="tableImgBox">
                             <img
-                              src={`${base.cdnUrl}/uploads/${el.id}/product/${el.gallery_images[0]}`}
+                              src={`${base.cdnUrl}uploads/product/${el.id}/product/${el.gallery_images[0]}`}
                               className="tableImg"
                             />
                           </div>
