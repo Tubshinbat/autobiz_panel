@@ -121,7 +121,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        hybrid: action.hybrid,
+        hybrid: action.singleHybrids,
         error: null,
       };
 
