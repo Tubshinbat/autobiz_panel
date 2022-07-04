@@ -70,6 +70,10 @@ import Hybrid from "../Hybrid";
 import { default as HybridAdd } from "../Hybrid/Add";
 import { default as HybridEdit } from "../Hybrid/Edit";
 
+import Freemod from "../Freemod";
+import { default as FreemodAdd } from "../Freemod/Add";
+import { default as FreemodEdit } from "../Freemod/Edit";
+
 import Beproduct from "../BeProduct";
 import { default as BeproductView } from "../BeProduct/View";
 import { default as BeproductEdit } from "../BeProduct/Edit";
@@ -177,6 +181,10 @@ function App(props) {
               <Route path="/ordertype/add" component={OrderTypeAdd} />
               <Route path="/ordertype/edit/:id" component={OrderTypeEdit} />
               <Route path="/ordertype" component={OrderType} />
+
+              <Route path="/freemod/add" component={FreemodAdd} />
+              <Route path="/freemod/edit/:id" component={FreemodEdit} />
+              <Route path="/freemod" component={Freemod} />
 
               <Route path="/local_orders/edit/:id" component={LocalOrderEdit} />
               <Route path="/local_orders" component={LocalOrder} />

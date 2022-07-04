@@ -35,6 +35,7 @@ import hybridReducer from "./redux/reducer/hybridReducer";
 import orderReducer from "./redux/reducer/orderReducer";
 import orderTypeReducer from "./redux/reducer/orderTypeReducer";
 import beorderReducer from "./redux/reducer/beorderReducer";
+import freemodReducer from "./redux/reducer/freemodReducer";
 
 import "./index.css";
 
@@ -79,6 +80,7 @@ const reducers = combineReducers({
   orderReducer,
   beorderReducer,
   orderTypeReducer,
+  freemodReducer,
 });
 
 const middlewares = [loggerMiddlaware, thunk];

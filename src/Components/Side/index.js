@@ -53,7 +53,10 @@ const Side = () => {
                 <i className="nav-icon fa fa-car"></i>
                 <p>Hybrid арал</p>
               </NavItem>
-
+              <NavItem exact link="/freemod">
+                <i className="nav-icon fa fa-car"></i>
+                <p>Чөлөөлөгдөх арал</p>
+              </NavItem>
               <NavItem exact link="/beproduct">
                 <i className="nav-icon fa fa-car"></i>
                 <p>beforward машинууд</p>
