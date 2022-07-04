@@ -47,8 +47,11 @@ const Add = (props) => {
 
   useEffect(() => {
     setForm(() => ({ model: props.hybrid && props.hybrid.model }));
-    console.log(props.hybrid);
   }, [props.hybrid]);
+
+  useEffect(() => {
+    allCheck();
+  }, formData);
 
   // -- INIT FUNCTION
   const init = () => {
