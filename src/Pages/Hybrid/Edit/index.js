@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import MetaTags from "react-meta-tags";
-import { useCookies } from "react-cookie";
-import base from "../../../base";
 
 // HTML TAGS COMPONENTS
 import CardBoby from "../../../Components/General/CardBody";
@@ -10,7 +8,6 @@ import Section from "../../../Components/General/Section";
 import PageTitle from "../../../Components/PageTitle";
 import Spinner from "../../../Components/General/Spinner";
 import DropImage from "../../../Components/SingleDrop";
-
 import { ToastContainer } from "react-toastify";
 
 // LIB
@@ -18,12 +15,7 @@ import { toastControl } from "../../../lib/toasControl";
 import { requiredCheck, minLength, maxLength } from "../../../lib/inputRegex";
 
 // ACTIONS
-import {
-  allRemove,
-  tinymceAddPhoto,
-} from "../../../redux/actions/imageActions";
-
-import * as actions from "../../../redux/actions/carColorActions";
+import * as actions from "../../../redux/actions/hybridActions";
 
 // STYLE CSS
 import css from "./__.module.css";
@@ -32,10 +24,8 @@ const Add = (props) => {
   // USESTATE
   const [formData, setForm] = useState({});
   const [errors, setErrors] = useState({
-    name: true,
+    model: false,
   });
-  const [is_showType, SetIsShowType] = useState(null);
-  const [image, setImage] = useState("");
 
   // USEEFFECT
   useEffect(() => {
@@ -51,30 +41,18 @@ const Add = (props) => {
     if (props.success) {
       toastControl("success", props.success);
       props.clear();
-      setTimeout(() => props.history.replace("/car_color"), 2000);
+      setTimeout(() => props.history.replace("/hybrid"), 2000);
     }
   }, [props.success]);
 
-  // DROP Files CONTROL
   useEffect(() => {
-    setForm((bf) => ({ ...bf, image: props.image }));
-  }, [props.image]);
-
-  useEffect(() => {
-    if (props.carColor) {
-      setForm(() => ({ ...props.carColor }));
-      if (props.carColor.image) {
-        setImage(props.carColor.image);
-      }
-    }
-  }, [props.carColor]);
+    setForm(() => ({ model: props.hybrid.model }));
+  }, [props.hybrid]);
 
   // -- INIT FUNCTION
   const init = () => {
     props.clear();
-    props.removePhotos();
-    setForm(() => ({}));
-    props.getCarcolor(props.match.params.id);
+    props.getHybrid(props.match.params.id);
   };
 
   //CHECK FORM FUNCTION
@@ -87,7 +65,7 @@ const Add = (props) => {
     const valueErrors = Object.keys(errors);
     if (valueErrors.find((el) => checkName(el, name))) {
       let result = requiredCheck(val);
-      if (name === "name" && result === true) {
+      if (name === "model" && result === true) {
         result = minLength(val, 2);
         result === true && (result = maxLength(val, 300));
       }
@@ -121,9 +99,6 @@ const Add = (props) => {
           }
       } else sendData.append(index, formData[index]);
     });
-
-    sendData.append("oldImage", image);
-
     return sendData;
   };
 
@@ -152,68 +127,46 @@ const Add = (props) => {
 
   const addClick = () => {
     const sendData = convertFromdata();
-
+    console.log(formData);
     allCheck() === true
-      ? props.updateCarcolor(props.match.params.id, sendData)
+      ? props.updateHybrids(props.match.params.id, sendData)
       : toastControl("error", "Уучлаарай алдаа гарлаа дахин оролдоно уу!");
-  };
-
-  const deleteOldImage = (type) => {
-    setForm((bf) => {
-      delete bf[type];
-      return { ...bf };
-    });
-
-    type === "image" && setImage(() => "");
   };
 
   return (
     <Section>
       <MetaTags>
-        <title> Машины өнгө шинэчлэх | WEBR Control Panel</title>
+        <title> Машины арал нэмэх | WEBR Control Panel</title>
         <meta
           name="description"
-          content="Машины өнгө шинэчлэх | WeBR control panel"
+          content="Машины арал нэмэх | WeBR control panel"
         />
         <meta
           property="og:title"
-          content="Машины өнгө шинэчлэх | web control panel"
+          content="Машины арал нэмэх | web control panel"
         />
       </MetaTags>
 
-      <PageTitle name={`Машины төрөн шинэчлэх `} />
+      <PageTitle name={`Машины арал нэмэх `} />
       <div className="row">
         {props.loading === true && <Spinner />}
-        <div className="col-md-8">
+        <div className="col-md-12">
           <CardBoby>
             <div className={`${css.AddForm} row`}>
               <div className="col-md-12">
                 <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Машины өнгө {useCookies}</p>
+                  <p className={`${css.Title}`}> Машины арал </p>
                   <input
                     className="form-control"
                     type="text"
-                    name="name"
-                    placeholder="Машины өнгөийн гарчиг оруулна уу"
-                    value={formData.name}
+                    name="model"
+                    placeholder="Машины арал  оруулна уу"
+                    value={formData.model}
                     onChange={handleChange}
                   />
-                  {errors.name && (
-                    <span className={`litleError`}>{errors.name}</span>
+                  {errors.model && (
+                    <span className={`litleError`}>{errors.model}</span>
                   )}
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Машины өнгөний код </p>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="code"
-                    placeholder="Машины өнгөний код  оруулна уу"
-                    value={formData.code}
-                    onChange={handleChange}
-                  />
                 </div>
               </div>
 
@@ -239,69 +192,6 @@ const Add = (props) => {
             </div>
           </CardBoby>
         </div>
-        <div className="col-md-4">
-          <div className="card card-primary card-outline">
-            <div className="card-header">
-              <h3 className="card-title">ТОХИРГОО</h3>
-            </div>
-            <div className="card-body box-profile">
-              <div className="form-group">
-                <div className="custom-control custom-switch">
-                  <input
-                    type="checkbox"
-                    className="custom-control-input"
-                    id="newsActive"
-                    checked={formData.status}
-                    name="status"
-                    onChange={handleRadio}
-                  />
-                  <label className="custom-control-label" htmlFor="newsActive">
-                    Нийтэд харагдах
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="card card-primary card-outline">
-            <div className="card-header">
-              <h3 className="card-title">
-                <i className="far fa-image"></i> Машины өнгөийн зураг
-              </h3>
-            </div>
-
-            <div className="card-body box-profile">
-              <span>
-                {is_showType === "picture" &&
-                  "Зургууд маань харагдахдаа энгийн мэдээнээс өөрөөр харагдана"}
-              </span>
-              <div className={css.CategoryBox}>
-                <div className="card-body box-profile">
-                  <div className="form-group">
-                    <DropImage />
-                  </div>
-                  <p> Одоо байгаа зураг </p>
-                  <div className={css.Thumb}>
-                    {image && (
-                      <>
-                        <img
-                          src={`${base.cdnUrl}uploads/${image}`}
-                          className={`${css.OldImage} `}
-                        />
-                        <button
-                          className={`btn mybutton ${css.DeleteImgBtn}`}
-                          onClick={() => deleteOldImage("image")}
-                        >
-                          Одоо байгааг нь устгах
-                        </button>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <ToastContainer
         position="top-right"
@@ -320,21 +210,19 @@ const Add = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    carColor: state.carColorReducer.carColor,
     image: state.imageReducer.banner,
-    error: state.carColorReducer.error,
-    loading: state.carColorReducer.loading,
-    success: state.carColorReducer.success,
+    error: state.hybridReducer.error,
+    loading: state.hybridReducer.loading,
+    success: state.hybridReducer.success,
+    hybrid: state.hybridReducer.hybrid,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCarcolor: (id) => dispatch(actions.getCarcolor(id)),
-    updateCarcolor: (id, data) => dispatch(actions.updateCarcolor(id, data)),
+    updateHybrids: (id, data) => dispatch(actions.updateHybrids(id, data)),
+    getHybrid: (id) => dispatch(actions.getHybrids(id)),
     clear: () => dispatch(actions.clear()),
-    tinymceAddPhoto: (file) => dispatch(tinymceAddPhoto(file)),
-    removePhotos: () => dispatch(allRemove()),
   };
 };
 

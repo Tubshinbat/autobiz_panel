@@ -136,18 +136,18 @@ const Add = (props) => {
   return (
     <Section>
       <MetaTags>
-        <title> Машины өнгө нэмэх | WEBR Control Panel</title>
+        <title> Машины арал нэмэх | WEBR Control Panel</title>
         <meta
           name="description"
-          content="Машины өнгө нэмэх | WeBR control panel"
+          content="Машины арал нэмэх | WeBR control panel"
         />
         <meta
           property="og:title"
-          content="Машины өнгө нэмэх | web control panel"
+          content="Машины арал нэмэх | web control panel"
         />
       </MetaTags>
 
-      <PageTitle name={`Машины өнгө нэмэх `} />
+      <PageTitle name={`Машины арал нэмэх `} />
       <div className="row">
         {props.loading === true && <Spinner />}
         <div className="col-md-12">
@@ -155,12 +155,12 @@ const Add = (props) => {
             <div className={`${css.AddForm} row`}>
               <div className="col-md-12">
                 <div className="form-group input-group-sm">
-                  <p className={`${css.Title}`}> Машины өнгө </p>
+                  <p className={`${css.Title}`}> Машины арал </p>
                   <input
                     className="form-control"
                     type="text"
                     name="model"
-                    placeholder="Машины өнгө  оруулна уу"
+                    placeholder="Машины арал  оруулна уу"
                     value={formData.model}
                     onChange={handleChange}
                   />
