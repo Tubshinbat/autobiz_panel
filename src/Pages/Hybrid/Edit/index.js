@@ -46,7 +46,7 @@ const Add = (props) => {
   }, [props.success]);
 
   useEffect(() => {
-    setForm(() => ({ model: props.hybrid.model }));
+    setForm(() => ({ model: props.hybrid && props.hybrid.model }));
   }, [props.hybrid]);
 
   // -- INIT FUNCTION
