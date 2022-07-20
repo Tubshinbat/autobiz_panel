@@ -27,6 +27,14 @@ const Side = () => {
               </NavItem>
             </PackList>
             <PackList name="Үндсэн удирдлагууд">
+              <NavItem exact link="/price">
+                <i className="nav-icon fa fa-money-bill"></i>
+                <p>Үнэ бодох</p>
+              </NavItem>
+              <NavItem exact link="/home_cars">
+                <i className="nav-icon fa fa-car"></i>
+                <p>Эхэнд харагдах машинууд</p>
+              </NavItem>
               <NavItem exact link="/product">
                 <i className="nav-icon fa fa-car"></i>
                 <p>Бэлэн машинууд</p>

@@ -25,6 +25,7 @@
     "react-html-parser": "^2.0.2",
     "react-js-pagination": "^3.0.2",
     "react-meta-tags": "^1.0.1",
+    "react-multiple-select-dropdown-lite": "^2.0.5",
     "react-number-format": "^4.5.5",
     "react-redux": "^7.2.4",
     "react-router-breadcrumbs-hoc": "^3.3.1",

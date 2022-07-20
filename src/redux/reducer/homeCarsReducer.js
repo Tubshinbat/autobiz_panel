@@ -2,48 +2,51 @@ const initialState = {
   loading: false,
   success: null,
   error: null,
-  products: [],
+  homeCars: [],
   paginationLast: {},
-  product: {},
+  homeCar: {},
+  groupData: {
+    mark_txt: [],
+    type_txt: [],
+    model: [],
+  },
   //count
   totalCount: null,
 };
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "CLEAR_PRODUCT":
+    case "CLEAR_HOMECAR":
       return {
         ...state,
         error: null,
         success: null,
-        product: {},
-        products: [],
-        paginationLast: {},
-        totalCount: null,
+        homeCar: {},
+        homeCars: [],
       };
 
-    case "LOAD_PRODUCTS_START":
+    case "LOAD_HOMECARS_START":
       return {
         ...state,
         loading: true,
         error: null,
         suceess: null,
-        products: [],
+        homeCars: [],
       };
 
-    case "LOAD_PRODUCTS_SUCCESS":
+    case "LOAD_HOMECARS_SUCCESS":
       return {
         ...state,
         loading: false,
-        errot: null,
-        products: action.products,
+        homeCars: action.homeCars,
       };
 
-    case "LOAD_PRODUCTS_ERROR":
+    case "LOAD_HOMECARS_ERROR":
       return {
         ...state,
         loading: false,
         success: null,
-        products: [],
+        homeCars: [],
         error: action.error,
       };
 
@@ -53,23 +56,24 @@ const reducer = (state = initialState, action) => {
         paginationLast: action.pagination,
       };
 
-    // CREATE PRODUCT
+    // CREATE HOMECAR
 
-    case "CREATE_PRODUCT_START":
+    case "SAVE_HOMECAR_START":
       return {
         ...state,
         loading: true,
         success: null,
         error: null,
+        homeCar: null,
       };
-    case "CREATE_PRODUCT_SUCCESS":
+    case "SAVE_HOMECAR_SUCCESS":
       return {
         ...state,
         loading: false,
-        success: "Амжилттай машины төрөл нэмэгдлээ",
+        success: "Амжилттай баннер нэмэгдлээ",
         error: null,
       };
-    case "CREATE_PRODUCT_ERROR":
+    case "SAVE_HOMECAR_ERROR":
       return {
         ...state,
         loading: false,
@@ -78,21 +82,21 @@ const reducer = (state = initialState, action) => {
       };
 
     // DELETE
-    case "DELETE_MULT_PRODUCT_START":
+    case "DELETE_MULT_HOMECAR_START":
       return {
         ...state,
         loading: true,
         success: null,
         error: null,
       };
-    case "DELETE_MULT_PRODUCT_SUCCESS":
+    case "DELETE_MULT_HOMECAR_SUCCESS":
       return {
         ...state,
         loading: false,
         success: "Амжилттай устгагдлаа",
         error: null,
       };
-    case "DELETE_MULT_PRODUCT_ERROR":
+    case "DELETE_MULT_HOMECAR_ERROR":
       return {
         ...state,
         loading: false,
@@ -100,49 +104,118 @@ const reducer = (state = initialState, action) => {
         error: action.error,
       };
 
-    // GET PRODUCT
+    // GET HOMECAR
 
-    case "GET_PRODUCT_START":
+    case "GET_HOMECAR_INIT":
+      return {
+        ...state,
+        loading: false,
+        success: null,
+        error: null,
+        homeCar: {},
+      };
+
+    case "GET_HOMECAR_START":
       return {
         ...state,
         loading: true,
-        product: {},
+        homeCar: {},
         error: null,
       };
 
-    case "GET_PRODUCT_SUCCESS":
+    case "GET_HOMECAR_SUCCESS":
       return {
         ...state,
         loading: false,
-        product: action.product,
+        homeCar: action.singleHomeCars,
         error: null,
       };
 
-    case "GET_PRODUCT_ERROR":
+    case "GET_HOMECAR_ERROR":
       return {
         ...state,
         loading: false,
-        product: {},
+        homeCar: {},
+        error: action.error,
+      };
+
+    // GROUP
+    case "GROUP_HOMECAR_START":
+      return {
+        ...state,
+        loading: true,
+        groupData: { ...state.groupData },
+        error: null,
+      };
+
+    case "GROUP_HOMECAR_SUCCESS": {
+      let groupData = {
+        ...state.groupData,
+        [action.groupName]: action.group,
+      };
+
+      return {
+        ...state,
+        loading: false,
+        groupData,
+        error: null,
+      };
+    }
+    case "GROUP_HOMECAR_ERROR":
+      return {
+        ...state,
+        loading: false,
+        groupData: { ...state.groupData },
+        error: action.error,
+      };
+
+    //GROUP AND FILTER
+    case "GROUP_HOMECAR_FILTER__START":
+      return {
+        ...state,
+        loading: true,
+        groupData: { ...state.groupData },
+        error: null,
+      };
+
+    case "GROUP_HOMECAR_FILTER__SUCCESS": {
+      let groupData = {
+        ...state.groupData,
+        [action.groupName]: action.group,
+      };
+
+      return {
+        ...state,
+        loading: false,
+        groupData,
+        error: null,
+      };
+    }
+    case "GROUP_HOMECAR_FILTER__ERROR":
+      return {
+        ...state,
+        loading: false,
+        groupData: { ...state.groupData },
         error: action.error,
       };
 
     //UPDATE
 
-    case "UPDATE_PRODUCT_START":
+    case "UPDATE_HOMECAR_START":
       return {
         ...state,
         success: null,
         loading: true,
         error: null,
       };
-    case "UPDATE_PRODUCT_SUCCESS":
+    case "UPDATE_HOMECAR_SUCCESS":
       return {
         ...state,
         loading: false,
         success: "Мэдээллийг амжилттай шинэчлэгдлээ",
         error: null,
       };
-    case "UPDATE_PRODUCT_ERROR":
+    case "UPDATE_HOMECAR_ERROR":
       return {
         ...state,
         loading: false,
@@ -158,21 +231,21 @@ const reducer = (state = initialState, action) => {
       };
 
     // GET COUNT
-    case "GET_COUNT_PRODUCT_START":
+    case "GET_COUNT_HOMECAR_START":
       return {
         ...state,
         loading: true,
         totalCount: null,
         error: null,
       };
-    case "GET_COUNT_PRODUCT_SUCCESS":
+    case "GET_COUNT_HOMECAR_SUCCESS":
       return {
         ...state,
         loading: false,
-        totalCount: action.totalCount,
+        totalCount: action.count,
         error: null,
       };
-    case "GET_COUNT_PRODUCT_ERROR":
+    case "GET_COUNT_HOMECAR_ERROR":
       return {
         ...state,
         loading: false,

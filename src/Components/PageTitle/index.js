@@ -277,6 +277,23 @@ const routes = [
     path: "/stock_orders/edit/:id",
     breadcrumb: DynamicNewsBreadcrumb,
   },
+
+  {
+    path: "/price",
+    breadcrumb: "Үнэ тооцоолуур",
+  },
+  {
+    path: "/price/add",
+    breadcrumb: "Үнэ тооцоолуур нэмэх",
+  },
+  {
+    path: "/price/edit",
+    breadcrumb: "Үнэ тооцоолуур шинчлэх",
+  },
+  {
+    path: "/price/edit/:id",
+    breadcrumb: DynamicNewsBreadcrumb,
+  },
 ];
 let lastBread = "";
 

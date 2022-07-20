@@ -345,7 +345,7 @@ export const getCountProductStart = () => {
 export const getCountProductSuccess = (result) => {
   return {
     type: "GET_COUNT_PRODUCT_SUCCESS",
-    orderCount: result,
+    totalCount: result,
   };
 };
 

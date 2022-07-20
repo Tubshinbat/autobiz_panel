@@ -3,6 +3,7 @@ import * as React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../../pageStyle.css";
+import "react-multiple-select-dropdown-lite/dist/index.css";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -88,6 +89,14 @@ import { default as LocalOrderEdit } from "../LocalOrder/Edit";
 
 import StockOrder from "../StockOrder";
 import { default as StockOrderEdit } from "../StockOrder/Edit";
+
+import Price from "../Price";
+import { default as PriceAdd } from "../Price/Add";
+import { default as PriceEdit } from "../Price/Edit";
+
+import HomeCars from "../HomeCars";
+import { default as HomeCarsAdd } from "../HomeCars/Add";
+import { default as HomeCarsEdit } from "../HomeCars/Edit";
 
 import Menu from "../Menu";
 // Actions
@@ -191,6 +200,14 @@ function App(props) {
 
               <Route path="/stock_orders/edit/:id" component={StockOrderEdit} />
               <Route path="/stock_orders" component={StockOrder} />
+
+              <Route path="/price/edit/:id" component={PriceEdit} />
+              <Route path="/price/add" component={PriceAdd} />
+              <Route path="/price" component={Price} />
+
+              <Route path="/home_cars/edit/:id" component={HomeCarsEdit} />
+              <Route path="/home_cars/add" component={HomeCarsAdd} />
+              <Route path="/home_cars" component={HomeCars} />
 
               <Route path="/" exact component={Dashboard} />
               <Route path="/logout" component={Logout} />

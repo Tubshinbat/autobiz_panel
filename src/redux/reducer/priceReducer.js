@@ -2,48 +2,45 @@ const initialState = {
   loading: false,
   success: null,
   error: null,
-  products: [],
+  prices: [],
   paginationLast: {},
-  product: {},
+  price: {},
   //count
+  countLoading: false,
   totalCount: null,
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "CLEAR_PRODUCT":
+    case "CLEAR_PRICE":
       return {
         ...state,
         error: null,
         success: null,
-        product: {},
-        products: [],
-        paginationLast: {},
-        totalCount: null,
+        price: {},
       };
 
-    case "LOAD_PRODUCTS_START":
+    case "LOAD_PRICES_START":
       return {
         ...state,
         loading: true,
         error: null,
         suceess: null,
-        products: [],
+        prices: [],
       };
 
-    case "LOAD_PRODUCTS_SUCCESS":
+    case "LOAD_PRICES_SUCCESS":
       return {
         ...state,
         loading: false,
-        errot: null,
-        products: action.products,
+        prices: action.loadPrices,
       };
 
-    case "LOAD_PRODUCTS_ERROR":
+    case "LOAD_PRICES_ERROR":
       return {
         ...state,
         loading: false,
         success: null,
-        products: [],
+        prices: [],
         error: action.error,
       };
 
@@ -53,23 +50,24 @@ const reducer = (state = initialState, action) => {
         paginationLast: action.pagination,
       };
 
-    // CREATE PRODUCT
+    // CREATE PRICE
 
-    case "CREATE_PRODUCT_START":
+    case "CREATE_PRICE_START":
       return {
         ...state,
         loading: true,
         success: null,
         error: null,
+        price: null,
       };
-    case "CREATE_PRODUCT_SUCCESS":
+    case "CREATE_PRICE_SUCCESS":
       return {
         ...state,
         loading: false,
-        success: "Амжилттай машины төрөл нэмэгдлээ",
+        success: "Амжилттай нэмэгдлээ",
         error: null,
       };
-    case "CREATE_PRODUCT_ERROR":
+    case "CREATE_PRICE_ERROR":
       return {
         ...state,
         loading: false,
@@ -78,21 +76,21 @@ const reducer = (state = initialState, action) => {
       };
 
     // DELETE
-    case "DELETE_MULT_PRODUCT_START":
+    case "DELETE_MULT_PRICE_START":
       return {
         ...state,
         loading: true,
         success: null,
         error: null,
       };
-    case "DELETE_MULT_PRODUCT_SUCCESS":
+    case "DELETE_MULT_PRICE_SUCCESS":
       return {
         ...state,
         loading: false,
         success: "Амжилттай устгагдлаа",
         error: null,
       };
-    case "DELETE_MULT_PRODUCT_ERROR":
+    case "DELETE_MULT_PRICE_ERROR":
       return {
         ...state,
         loading: false,
@@ -100,49 +98,58 @@ const reducer = (state = initialState, action) => {
         error: action.error,
       };
 
-    // GET PRODUCT
+    // GET PRICE
 
-    case "GET_PRODUCT_START":
+    case "GET_PRICE_INIT":
+      return {
+        ...state,
+        loading: false,
+        success: null,
+        error: null,
+        price: {},
+      };
+
+    case "GET_PRICE_START":
       return {
         ...state,
         loading: true,
-        product: {},
+        price: {},
         error: null,
       };
 
-    case "GET_PRODUCT_SUCCESS":
+    case "GET_PRICE_SUCCESS":
       return {
         ...state,
         loading: false,
-        product: action.product,
+        price: action.price,
         error: null,
       };
 
-    case "GET_PRODUCT_ERROR":
+    case "GET_PRICE_ERROR":
       return {
         ...state,
         loading: false,
-        product: {},
+        price: {},
         error: action.error,
       };
 
     //UPDATE
 
-    case "UPDATE_PRODUCT_START":
+    case "UPDATE_PRICE_START":
       return {
         ...state,
         success: null,
         loading: true,
         error: null,
       };
-    case "UPDATE_PRODUCT_SUCCESS":
+    case "UPDATE_PRICE_SUCCESS":
       return {
         ...state,
         loading: false,
         success: "Мэдээллийг амжилттай шинэчлэгдлээ",
         error: null,
       };
-    case "UPDATE_PRODUCT_ERROR":
+    case "UPDATE_PRICE_ERROR":
       return {
         ...state,
         loading: false,
@@ -158,24 +165,24 @@ const reducer = (state = initialState, action) => {
       };
 
     // GET COUNT
-    case "GET_COUNT_PRODUCT_START":
+    case "GET_COUNT_PRICE_START":
       return {
         ...state,
-        loading: true,
+        countLoading: true,
         totalCount: null,
         error: null,
       };
-    case "GET_COUNT_PRODUCT_SUCCESS":
+    case "GET_COUNT_PRICE_SUCCESS":
       return {
         ...state,
-        loading: false,
-        totalCount: action.totalCount,
+        coutLoading: false,
+        totalCount: action.orderCount,
         error: null,
       };
-    case "GET_COUNT_PRODUCT_ERROR":
+    case "GET_COUNT_PRICE_ERROR":
       return {
         ...state,
-        loading: false,
+        countLoading: false,
         totalCount: null,
         error: action.error,
       };

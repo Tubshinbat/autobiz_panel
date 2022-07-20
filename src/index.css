@@ -153,3 +153,21 @@ code {
   background-color: rgb(235, 235, 235);
   margin-bottom: 10px;
 }
+
+.sortbox{
+  margin-bottom: 30px;
+}
+
+.sortInput,
+.msl-vars{
+  --menu-max-height: 300px;
+  --input-width: 100%;
+  --font-size: 12px;
+  --border-radius: 2px 2px 2px 2px;
+  --active-menu-shadow: 1px 1px 5px 0px grey;
+  --line-height: 1.4;
+  --active-menu-background: #fff;
+  --active-menu-radius: var(--border-radius);
+  padding:0px !important;
+  margin: 0px !important;
+}
